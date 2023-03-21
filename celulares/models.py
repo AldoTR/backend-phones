@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+
 class Celular(models.Model):
      version = models.TextField(default='', blank = False)
      descripcion = models.TextField(default='', blank = False)
