@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'phones.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'phones_local',
+        'NAME': 'phones_develop',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': 'localhost',
