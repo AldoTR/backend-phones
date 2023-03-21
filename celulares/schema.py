@@ -55,7 +55,7 @@ class CreateCelular(graphene.Mutation):
                     memoria=memoria
                     )
     
-        celular.save() # insert into Auto()... values (...)
+        celular.save()
         return CreateCelular(
                 id=celular.id,
                 descripcion=celular.descripcion,
