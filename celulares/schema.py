@@ -54,8 +54,8 @@ class CreateCelular(graphene.Mutation):
                     cpu=cpu,
                     memoria=memoria
                     )
-    
         celular.save()
+        
         return CreateCelular(
                 id=celular.id,
                 descripcion=celular.descripcion,
@@ -67,8 +67,11 @@ class CreateCelular(graphene.Mutation):
                 fecha=celular.fecha,
                 color=celular.color,
                 cpu=celular.cpu,
-                memoria=celular.memoria
+                memoria=celular.memoria,
                              )
 
 class Mutation(graphene.ObjectType):
     create_celular = CreateCelular.Field()
+    
+schema = graphene.Schema(query=Query, mutation=Mutation)
+
