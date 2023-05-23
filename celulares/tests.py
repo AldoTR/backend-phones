@@ -63,11 +63,11 @@ def test_createCelular_mutation(self):
       
         response = self.query(
             CREATE_CELULAR_MUTATION,
-            variables={'version': '14 Pro Max', 'descripcion': 'Celular de Apple', 'marca': 'Apple', 'precio':, '30000', 'tamaño': 'Normal', 'sistema': 'iOS', 'fecha': 'Septiembre de 2022', 'color': 'Blanco', 'cpu': '8GB', 'memoria': '256 GB'}
-      )
-      print('mutation ')
-      print(response)
-      content = json.loads(response.content)
-      print(content)
-      self.assertResponseNoErrors(response)
-      self.assertDictEqual({"createCelular" : {"version: 14 Pro Max"}}, content['data])
+            variables={'version': '14 Pro Max', 'descripcion': 'Celular de Apple', 'marca': 'Apple', 'precio': '30000', 'tamano': 'Normal', 'sistema': 'iOS', 'fecha': 'Septiembre de 2022', 'color': 'Blanco', 'cpu': '8GB', 'memoria': '256 GB'}
+        )
+        print('mutation ')
+        print(response)
+        content = json.loads(response.content)
+        print(content)
+        self.assertResponseNoErrors(response)
+        self.assertDictEqual({"createCelular" : {"version: 14 Pro Max"}}, content['data])
