@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'vryy$ibh=sp6b4dx#_+#2fuew#&5+6@0=p$)6g24+f7@iahf)o'
+SECRET_KEY = config("TEST_SECRET_KEY", default='')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -70,6 +72,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'phones.wsgi.application'
+
+TEST_DATABASE = config("TEST_DATABASE", default='')
+TEST_USER = config("TEST_USER", default='')
+TEST_PASSWORD = config("TEST_PASSWORD", default='')
+TEST_HOST = config("TEST_HOST", default='')
+TEST_PORT = config("TEST_PORT", default=5432)
 
 
 # Database
