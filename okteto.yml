@@ -1,12 +1,12 @@
 build:
-  aldotr:  
+  phones-aldotr:  
     image: okteto.dev/aldotr:latest  # cambiar por su namespace de okteto
 
 deploy:
   - okteto build # build the image with the latest code
   - kubectl apply -f manifests # create all the resources in kubernetes
 dev:
-  aldotr:
+  phones-aldotr:
     command: bash
     sync:
     - .:/phones
