@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'graphene_django',
     'attributes',
+    'corsheaders'.
     'Celulares'
 ]
 
@@ -139,5 +141,10 @@ GRAPHENE = {
         'graphql_jwt.middleware.JSONWebTokenMiddleware',
     ],
 }
+
+AUTHENTICATION_BACKENDS = [
+    'graphql_jwt.backends.JSONWebTokenBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 CORS_ORIGIN_ALLOW_ALL = True
