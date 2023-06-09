@@ -5,6 +5,7 @@ import graphene
 import json
 
 # Create your tests here.
+
 from celulares.schema import schema
 from celulares.models import Celular
 
@@ -70,4 +71,4 @@ def test_createCelular_mutation(self):
         content = json.loads(response.content)
         print(content)
         self.assertResponseNoErrors(response)
-        self.assertDictEqual({"createCelular" : {"version: 14 Pro Max"}}, content['data])
+        self.assertDictEqual({"createCelular" : {"version: 14 Pro Max"}}, content['data'])
