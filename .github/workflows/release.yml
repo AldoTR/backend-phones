@@ -52,7 +52,7 @@ jobs:
     - name: Deploy
       uses: okteto/pipeline@2.7.0
       with:
-        name: phones-aldotr # cambiar por su namespace
+        name: phones-aldotr #
         timeout: 5m
 
 
