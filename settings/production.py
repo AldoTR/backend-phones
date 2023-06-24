@@ -11,26 +11,29 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(_file_).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'vryy$ibh=sp6b4dx#_+#2fuew#&5+6@0=p$)6g24+f7@iahf)o'
+#SECRET_KEY = 'zb9q0#^a8ov@euhljs_=^#c=81goi_h(2mq$c!z5+_bj302od*'
+SECRET_KEY = config("PROD_SECRET_KEY", default='')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'health_check',  
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -77,16 +80,36 @@ WSGI_APPLICATION = 'phones.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+PROD_DATABASE = config("PROD_DATABASE", default='')
+PROD_USER = config("PROD_USER", default='')
+PROD_PASSWORD = config("PROD_PASSWORD", default='')
+PROD_HOST = config("PROD_HOST", default='')
+PROD_PORT = config("PROD_PORT", default=5432)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'phones_local',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+        'NAME': PROD_DATABASE,
+        'USER': PROD_USER,
+        'PASSWORD': PROD_PASSWORD,
+        'HOST': PROD_HOST,
+        'PORT': PROD_PORT,
+        #'TEST': {
+        #    'NAME': TEST_DATABASE,
+        #},
+    },
 }
+
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'btwhcsde',
+#        'USER': 'btwhcsde',
+#        'PASSWORD': 'I-tbkn1406KQLRPYZa9GY-iK4R7aGvJU',
+#        'HOST': 'heffalump.db.elephantsql.com',
+#        'PORT': '5433',
+#    }
+#}
 
 
 # Password validation
@@ -121,9 +144,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -141,3 +161,5 @@ AUTHENTICATION_BACKENDS = [
     'graphql_jwt.backends.JSONWebTokenBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True

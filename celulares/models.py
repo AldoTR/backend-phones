@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 # Create your models here.
 
@@ -13,3 +14,8 @@ class Celular(models.Model):
      color = models.TextField(default = 'Color', blank = False)
      cpu = models.TextField(default = '- GB', blank = False)
      memoria = models.TextField(default = '- GB', blank = False)
+     posted_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
+     
+class Vote(models.Model):
+     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+     celular = models.ForeignKey('celulares.Celular', related_name='votes', on_delete=models.CASCADE)
