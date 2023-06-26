@@ -5,9 +5,9 @@ metadata:
   labels:
     app: postgres
 data:
-  PROD_SECRET_KEY: secret
-  PROD_DATABASE: igjprbmc
-  PROD_USER: igjprbmc
-  PROD_PASSWORD: WxYSSU3-aNFBGyygY9D3NjkZlmht63FA
-  PROD_HOST: mahmud.db.elephantsql.com
+  PROD_SECRET_KEY: centenito
+  PROD_DATABASE: lqkyydie
+  PROD_USER: lqkyydie
+  PROD_PASSWORD: f2iKG595PsZkrE8u73ZjFLTcx6pNccS6
+  PROD_HOST: hansken.db.elephantsql.com
   PROD_PORT: "5432"
